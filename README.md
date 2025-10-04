@@ -5,11 +5,25 @@ A robust RESTful API built with ExpressJS for managing blog posts.
 ## Project Structure
 
 ```
-src/
-├── app.js           # Application entry point
-├── controllers/     # Request handlers and business logic
-├── models/          # Data models and in-memory storage
-└── routes/          # API endpoint definitions
+blog-api/
+├── node_modules/
+├── src/
+│   ├── config/
+│   │   └── config.js
+│   ├── controllers/
+│   │   └── blogController.js
+│   ├── middlewares/
+│   │   ├── errorHandler.js
+│   │   └── logger.js
+│   ├── models/
+│   │   └── blogModel.js
+│   ├── routes/
+│   │   └── blogRoutes.js
+│   └── app.js
+├── .env
+├── .gitignore
+├── package.json
+└── README.md
 ```
 
 ## Setup

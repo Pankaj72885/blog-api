@@ -1,21 +1,25 @@
+// src/app.js
+
 const express = require("express");
 const blogRoutes = require("./routes/blogRoutes");
+const config = require("./config/config");
+const logger = require("./middlewares/logger");
+const errorHandler = require("./middlewares/errorHandler");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-// This lets us use JSON in requests
 app.use(express.json());
+app.use(logger);
 
-// Home route
 app.get("/", (req, res) => {
   res.send("Welcome to the Blog API!");
 });
 
-// Use blog routes for /api/blogs
 app.use("/api/blogs", blogRoutes);
 
-// Start server
+app.use(errorHandler);
+
+const PORT = config.port;
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
